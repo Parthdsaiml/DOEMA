@@ -1,4 +1,4 @@
-# Two Sum [LeetCode - [[link](https://leetcode.com/problems/two-sum/description/)]]
+# Two Sum [LeetCode - [[Problem](https://leetcode.com/problems/two-sum/description/)]]
 
 ## **Pattern**
 - HashMap
