@@ -35,3 +35,70 @@ class Solution {
     }
 }
 ```
+## **Group Anagrams [Link]**  
+
+### 🧩 **Pattern**  
+*(Frequency Map, HashMap Approach)*  
+
+### 💡 **Intuition**  
+- Instead of sorting, we use a frequency map (array of size 26 for lowercase letters).  
+- Each string's character count acts as a unique identifier (key) in a HashMap.  
+- Anagrams will have the same frequency map, so they get grouped together.  
+
+### 🔑 **Trick/Technique**  
+- **Core Insight**: Convert each string into a character frequency array and use it as a key in a HashMap.  
+- **Edge Cases**: Empty strings, all anagrams, no anagrams.  
+
+### **Code Snippet** (Java)  
+```java
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        Map<String, List<String>> anagramMap = new HashMap<>();
+        for (String str : strs) {
+            int[] freq = new int[26];
+            for (char c : str.toCharArray()) {
+                freq[c - 'a']++;
+            }
+            String key = Arrays.toString(freq);
+            
+            anagramMap.putIfAbsent(key, new ArrayList<>());
+            anagramMap.get(key).add(str);
+        }
+        return new ArrayList<>(anagramMap.values());
+    }
+}
+```
+
+---
+
+## **Remove Element [Link]**  
+
+### 🧩 **Pattern**  
+*(Two Pointer Approach, In-Place Modification)*  
+
+### 💡 **Intuition**  
+- We use two pointers: one iterates over the array, the other keeps track of the valid position.  
+- If an element matches the target, we skip it; otherwise, we move it to the valid position.  
+- This avoids unnecessary shifts and maintains order for remaining elements.  
+
+### 🔑 **Trick/Technique**  
+- **Core Insight**: Use two pointers to overwrite unwanted elements and maintain a new valid length.  
+- **Edge Cases**: Empty array, all elements match target, no elements match target.  
+
+### **Code Snippet** (Java)  
+```java
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        int validIndex = 0;
+        for (int num : nums) {
+            if (num != val) {
+                nums[validIndex++] = num;
+            }
+        }
+        return validIndex;
+    }
+}
+```
+
+
+
